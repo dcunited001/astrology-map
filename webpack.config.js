@@ -1,17 +1,18 @@
 const path = require('path');
 
-// const webpack = require('webpack'); // for react hot loader
+const pkg = require('./package.json');
+const webpack = require('webpack'); // for react hot loader
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const WEBPACK_CONFIG = {
-  // TODO: mode: 'development'
+  mode: process.env.NODE_ENV || 'development',
   entry: {
-      app: './src/index.js'
+    app: ['react-hot-loader/patch', './app/index.js']
   },
   resolve: {
-    modules: ['./src', 'node_modules'],
-    extensions: ['*', '.js', '.jsx']
+    modules: [path.resolve(__dirname, 'app'), 'node_modules'],
+    extensions: ['*', '.js', '.jsx'],
   },
   devtool: 'inline-source-map', // eval-source-map? 
   module: {
@@ -48,23 +49,36 @@ const WEBPACK_CONFIG = {
   },
   target: 'web',
   output: {
-    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
+    filename: '[name].bundle.js'
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    stats: {
+      warnings: false
+    }
+  },
+  node: {
+    fs: 'empty'
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'DEBUG']),
     new HtmlWebpackPlugin({
-      title: 'Development'
-    })
+      template: './app/index.ejs',
+      templateParameters: {
+        'env': process.env.NODE_ENV || 'development',
+        'debug': process.env.DEBUG || '',
+        'pkgName': pkg.name,
+        'pkgDescription': pkg.description,
+        'pkgVersion': pkg.version
+      }
+    }),
   ]
 };
 
 module.exports = function(env, argv) {
-  console.log(WEBPACK_CONFIG);
   return WEBPACK_CONFIG;
 
   // multiple build environments: (see webpack.config.local.js)
