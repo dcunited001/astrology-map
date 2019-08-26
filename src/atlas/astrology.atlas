@@ -1,0 +1,174 @@
+
+astrology.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+01_aries
+  rotate: false
+  xy: 2, 2
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+02_taurus
+  rotate: false
+  xy: 140, 2
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+03_gemini
+  rotate: false
+  xy: 278, 2
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+04_cancer
+  rotate: false
+  xy: 416, 2
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+05_leo
+  rotate: false
+  xy: 554, 2
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+06_virgo
+  rotate: false
+  xy: 692, 2
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+07_libra
+  rotate: false
+  xy: 830, 2
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+08_scorpio
+  rotate: false
+  xy: 2, 132
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+09_sagittarius
+  rotate: false
+  xy: 140, 132
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+10_capricorn
+  rotate: false
+  xy: 278, 132
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+11_aquarious
+  rotate: false
+  xy: 416, 132
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+12_pisces
+  rotate: false
+  xy: 554, 132
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+13_Ophiuchus
+  rotate: false
+  xy: 692, 132
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+14_sun
+  rotate: false
+  xy: 830, 132
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+15_star
+  rotate: false
+  xy: 2, 262
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+16_moon_1
+  rotate: false
+  xy: 140, 262
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+17_moon_2
+  rotate: false
+  xy: 278, 262
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+18_moon_3
+  rotate: false
+  xy: 416, 262
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+19_moon_4
+  rotate: false
+  xy: 554, 262
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+20_moon_5
+  rotate: false
+  xy: 692, 262
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+21_moon_6
+  rotate: false
+  xy: 830, 262
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+22_moon_7
+  rotate: false
+  xy: 2, 392
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+23_moon_8
+  rotate: false
+  xy: 140, 392
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
+24_shooting_star
+  rotate: false
+  xy: 278, 392
+  size: 136, 128
+  orig: 136, 128
+  offset: 0, 0
+  index: -1
