@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Compiled output
+dist/
+
+# Editors and IDEs
+.idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Misc
+.DS_Store
+npm-debug.log
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
