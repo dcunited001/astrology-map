@@ -2,7 +2,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 
 const processEnv = process.env.NODE_ENV || 'development';
-const config = dotenv.config({ path: `.env.${nodeEnv}` })
+const config = dotenv.config({ path: `.env.${processEnv}` })
 const processDebug = process.env.DEBUG;
 
 const pkg = require('./package.json');
@@ -18,10 +18,10 @@ const WEBPACK_CONFIG = {
   resolve: {
     modules: [path.resolve(__dirname, 'app'), 'node_modules'],
     extensions: ['*', '.js', '.jsx'],
-    // alias: {
-    //   TODO: 'mapbox-gl$': resolve('./node_modules/mapbox-gl/dist/mapbox-gl.js'),
+    alias: {
+    'mapbox-gl$': resolve('./node_modules/mapbox-gl/dist/mapbox-gl.js'),
     //   TODO: 'react-dom': '@hot-loader/react-dom'
-    // }
+    }
   },
   devtool: 'inline-source-map', // eval-source-map? 
   module: {
@@ -73,7 +73,9 @@ const WEBPACK_CONFIG = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new webpack.EnvironmentPlugin(['NODE_ENV', 'DEBUG']),
+    // TODO: new NamedModulesPlugin(), 
+    // - this handles prepended module ID's for complex webpack configs
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'DEBUG', 'MAPBOX_ACCESS_TOKEN']),
     new HtmlWebpackPlugin({
       template: './app/index.ejs',
       templateParameters: {

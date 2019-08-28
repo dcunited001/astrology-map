@@ -3,8 +3,7 @@ import { render } from 'react-dom';
 import App from './App';
 
 // Set your mapbox token here
-// const MAPBOX_TOKEN = process.env.MapboxAccessToken; // eslint-disable-line
-
+const MAPBOX_TOKEN = process.env.MAPBOX_ACCESS_TOKEN;
 
 // import planetsAtlas from './atlas/planets.atlas';
 // import planetsTexture from './atlas/planets.png';
