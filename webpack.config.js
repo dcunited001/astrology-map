@@ -1,4 +1,9 @@
 const path = require('path');
+const dotenv = require('dotenv');
+
+const processEnv = process.env.NODE_ENV || 'development';
+const config = dotenv.config({ path: `.env.${nodeEnv}` })
+const processDebug = process.env.DEBUG;
 
 const pkg = require('./package.json');
 const webpack = require('webpack'); // for react hot loader
@@ -6,13 +11,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const WEBPACK_CONFIG = {
-  mode: process.env.NODE_ENV || 'development',
+  mode: processEnv,
   entry: {
     app: ['react-hot-loader/patch', './app/index.js']
   },
   resolve: {
     modules: [path.resolve(__dirname, 'app'), 'node_modules'],
     extensions: ['*', '.js', '.jsx'],
+    // alias: {
+    //   TODO: 'mapbox-gl$': resolve('./node_modules/mapbox-gl/dist/mapbox-gl.js'),
+    //   TODO: 'react-dom': '@hot-loader/react-dom'
+    // }
   },
   devtool: 'inline-source-map', // eval-source-map? 
   module: {
@@ -68,8 +77,8 @@ const WEBPACK_CONFIG = {
     new HtmlWebpackPlugin({
       template: './app/index.ejs',
       templateParameters: {
-        'env': process.env.NODE_ENV || 'development',
-        'debug': process.env.DEBUG || '',
+        'env': processEnv,
+        'debug': processDebug,
         'pkgName': pkg.name,
         'pkgDescription': pkg.description,
         'pkgVersion': pkg.version

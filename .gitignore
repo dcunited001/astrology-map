@@ -24,3 +24,7 @@ logs
 pids
 *.pid
 *.seed
+
+# environment files
+.env.*
+!.env.example
