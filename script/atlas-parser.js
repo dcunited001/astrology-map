@@ -24,8 +24,8 @@
  * SOFTWARE.
  */
 
-var AtlasParser = (function() {
-  function parse(atlasTxt) {
+var AtlasParser = {
+  parse: function (atlasTxt) {
     
     var parentAttributes = ['format', 'filter', 'repeat'];
     var childAttributes = ['rotate', 'xy', 'size', 'split', 'orig', 'offset', 'index'];
@@ -105,12 +105,11 @@ var AtlasParser = (function() {
     str = str.replace(/#{2}/g, '"'); //fix children
   
     str = "{" + str + "}"; //wrap JSON
-    
+
     //return str;
     return JSON.parse(str);
   }
-  return {
-    parse:parse
-  }
-  })();
+};
+
+module.exports = AtlasParser;
   
