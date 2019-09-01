@@ -19,8 +19,8 @@ const WEBPACK_CONFIG = {
     modules: [path.resolve(__dirname, 'app'), 'node_modules'],
     extensions: ['*', '.js', '.jsx'],
     alias: {
-    'mapbox-gl$': resolve('./node_modules/mapbox-gl/dist/mapbox-gl.js'),
-    //   TODO: 'react-dom': '@hot-loader/react-dom'
+      'mapbox-gl$': path.resolve('./node_modules/mapbox-gl/dist/mapbox-gl.js'),
+      //   TODO: 'react-dom': '@hot-loader/react-dom'
     }
   },
   devtool: 'inline-source-map', // eval-source-map? 
@@ -32,28 +32,18 @@ const WEBPACK_CONFIG = {
     }, {
       test: /\.(eot|otf|ttf|woff|woff2)$/,
       use: 'file-loader',
-    },{
+    }, {
       test: /\.(png|gif|jpe?g)$/i,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {
-            name: '[path][name].[ext]',
-            emitFile: true
-          }
+      use: [{
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+          emitFile: true
         }
-      ]
+      }]
     }, {
       test: /\.(atlas)$/i,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {
-            name: '[path][name].[ext]',
-            emitFile: true
-          }
-        }
-      ]
+      use: 'raw-loader'
     }]
   },
   target: 'web',
