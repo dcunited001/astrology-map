@@ -38,8 +38,9 @@
   "dependencies": {
     "astronomia": "^2.1.0",
     "deck.gl": "^7.2.3",
-    "react-map-gl": "^5.0.10",
+    "protobufjs": "^6.8.8",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "react-map-gl": "^5.0.10"
   }
 }
