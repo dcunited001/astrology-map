@@ -27,6 +27,8 @@
     "express": "^4.17.1",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "luma.gl": "^7.2.0",
+    "protobufjs": "^6.8.8",
     "raw-loader": "^3.1.0",
     "react-hot-loader": "^4.12.11",
     "style-loader": "^1.0.0",
@@ -38,7 +40,6 @@
   "dependencies": {
     "astronomia": "^2.1.0",
     "deck.gl": "^7.2.3",
-    "protobufjs": "^6.8.8",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-map-gl": "^5.0.10"

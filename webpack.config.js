@@ -44,7 +44,13 @@ const WEBPACK_CONFIG = {
     }, {
       test: /\.(atlas)$/i,
       use: 'raw-loader'
-    }]
+    }, {
+      test: /\.bin$/,
+      use: 'file-loader',
+      options: {
+        name: '[path][name].[ext]'
+      }
+    }, ]
   },
   target: 'web',
   output: {
