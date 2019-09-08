@@ -32,3 +32,6 @@
 
 - paper on the [VSOP87
   method](http://adsabs.harvard.edu/full/1988A%26A...202..309B)
+- use GeoTIFF.js to encode TIFF's of VSOP data (to encode GL_RGBA32F textures)
+
+####
