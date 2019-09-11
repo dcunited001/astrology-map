@@ -8,7 +8,8 @@
     "watch": "webpack --watch",
     "start": "webpack-dev-server --open --hot",
     "build": "webpack",
-    "server": "node server.js"
+    "server": "node server.js",
+    "generate-vsop": "node ./script/gen-vsop.js",
   },
   "keywords": [],
   "author": "",
