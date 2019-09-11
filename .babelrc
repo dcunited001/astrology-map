@@ -1,12 +1,30 @@
 {
-  "presets": [
-    "@babel/preset-react", 
-    ["@babel/preset-env", {
-      "modules": false
-    }]
-  ],
-  "plugins": [
-    "react-hot-loader/babel",
-    "@babel/plugin-proposal-class-properties"
-  ]
+  "env": {
+    "development": {
+      "presets": [
+        "@babel/preset-react",
+        ["@babel/preset-env", {
+          "modules": false
+        }]
+      ],
+      "plugins": [
+        "react-hot-loader/babel",
+        "@babel/plugin-proposal-class-properties"
+      ]
+    },
+    "script": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "node": "current"
+            },
+            "modules": false,
+            "loose": true
+          }
+        ]
+      ]
+    }
+  }
 }
