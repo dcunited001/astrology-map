@@ -1,0 +1,76 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "inputs": [{
+    "id": "pickNpmScript",
+    "type": "promptString",
+    "default": "generate-vsop",
+    "description": "Pick a script, any script"
+  }],
+
+  "configurations": [{
+
+    "type": "node",
+    "request": "launch",
+    "name": "Launch via NPM",
+    "runtimeExecutable": "/Users/dc/node/bin/npm",
+    "runtimeArgs": [
+      "run",
+      "start"
+    ],
+    "port": 9229
+
+  }, {
+    "type": "node",
+    "request": "attach",
+    "name": "Attach to Remote",
+    "address": "127.0.0.1",
+    "port": 9229,
+    "localRoot": "${workspaceFolder}",
+    "remoteRoot": "/052f24e6-b510-4f1c-973c-27ab252e5a05"
+  }, {
+
+    "type": "node",
+    "request": "launch",
+    "name": "Debug NPM Script",
+    "runtimeExecutable": "npm",
+    "runtimeArgs": [
+      "run",
+      "${input:pickNpmScript}",
+      "--node-options=\"--inspect-brk\""
+    ],
+    "port": 9229,
+    "outputCapture": "std",
+    "env": { "BABEL_ENV": "script" }
+    // "env": { "NODE_OPTIONS": "--inspect-brk" }
+  }, {
+
+    "type": "node",
+    "request": "launch",
+    "name": "Debug Current Babel Script",
+    "runtimeExecutable": "npx",
+    "runtimeArgs": [
+      "babel-node",
+      "--inspect-brk"
+    ],
+    "program": "${file}",
+    "port": 9229,
+    "outputCapture": "std",
+    "env": { "BABEL_ENV": "script" }
+  }, {
+
+    "type": "node",
+    "request": "launch",
+    "name": "Debug Current Node Script",
+    "runtimeExecutable": "node",
+    "runtimeArgs": [
+      "--inspect-brk"
+    ],
+    "program": "${file}",
+    "port": 9229,
+    "outputCapture": "std",
+    "env": { "BABEL_ENV": "script" }
+  }]
+}

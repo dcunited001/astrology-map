@@ -1,0 +1,50 @@
+{
+  "version": "2.0.0",
+
+  "inputs": [{
+    "id": "pickNpmScript",
+    "type": "promptString",
+    "default": "generate-vsop",
+    "description": "Pick a script, any script"
+    // "type": "command",
+    // "command": "workbench.action.tasks.runTask",
+    // "args": "listNpmScripts"
+  }],
+
+  "tasks": [{
+      "type": "shell",
+      "label": "listNpmScripts",
+      "command": "json -f package.json scripts | json -ka",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "commandPick",
+      "command": "echo fdsa: ${input:pickNpmScript}",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "debugScript",
+      "command": "npm run ${input:pickNpmScript}",
+      "options": {
+        "env": { "NODE_OPTIONS": "--inspect-brk" },
+        "shell": {
+          "args": []
+        }
+      }
+    },
+    // {
+    //   "type": "npm",
+    //   "label": "Debug Script",
+    //   "script": "${input:pickNpmScript}",
+    //   "options": {
+    //     "env": { "NODE_OPTIONS": "--inspect-brk" },
+    //     "shell": {
+    //       "args": []
+    //     }
+    //   }
+    // }
+  ],
+
+}
