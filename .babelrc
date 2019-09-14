@@ -11,23 +11,6 @@
         "react-hot-loader/babel",
         "@babel/plugin-proposal-class-properties"
       ]
-    },
-    "script": {
-      "presets": [
-        [
-          "@babel/preset-env",
-          {
-            "targets": {
-              "node": "current"
-            },
-            "modules": false,
-            "loose": true
-          }
-        ]
-      ],
-      "plugins": [
-        "@babel/transform-runtime"
-      ]
     }
   }
 }
