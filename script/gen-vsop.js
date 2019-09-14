@@ -1,6 +1,15 @@
-const bson = require('bson');
 const VSOP = require('astronomia').data;
 const fs = require('fs');
+
+const protobuf = require('protobufjs/light');
+const pbJson = require('./../data/vsop87/vsop87-proto.json');
+const pbRoot = protobuf.Root.fromJSON(pbJson);
+
+const VsopSpectra = pbRoot.lookupType('vsop87.Spectra');
+const VsopSpectrum = pbRoot.lookupType('vsop87.Spectrum');
+const VsopPolynomial = pbRoot.lookupType('vsop87.Polynomial');
+const VsopPlanet = pbRoot.lookupType('vsop87.Planet');
+const VsopSystem = pbRoot.lookupType('vsop87.System');
 
 const planets = [
   'mercury',
@@ -16,12 +25,38 @@ const planets = [
 const heliocentricKeys = ['L', 'B', 'R'];
 const vsopOrders = [...Array(6).keys()];
 
+// for each planet
 const vsopData = planets.reduce((data, planet) => {
-  data[planet] = VSOP[planet];
+  // for each polynomial
+  data[planet] = ['L', 'B', 'R'].reduce((_planet, poly) => {
+    // for each order in the polynomial
+    let polyKeys = Object.keys(VSOP[planet][poly]);
+    const polynomial = polyKeys.reduce((arr, order) => {
+      let orderInt = parseInt(order);
+      // convert the spectrum elements to objects
+      arr[orderInt] = VSOP[planet][poly][order].map((s) => {
+        return VsopSpectra.create({ a: s[0], b: s[1], c: s[2], n: orderInt })
+      });
+
+      return arr;
+    }, Array(polyKeys.length));
+
+    _planet[poly.toLowerCase()] = VsopPolynomial.create({
+      orders: polynomial.map(p => {
+        return VsopSpectrum.create({ spectrum: p || [] });
+      })
+    });
+    return _planet;
+  }, {})
+
+  data[planet] = VsopPlanet.create(data[planet]);
   return data
 }, {})
 
-fs.writeFileSync('./data/vsop87/vsop.bson', bson.serialize(vsopData));
+const system = VsopSystem.create({ planets: vsopData });
+
+fs.writeFileSync('./data/vsop87/vsop87.bin', VsopSystem.encode(system).finish());
+fs.writeFileSync('./data/vsop87/vsop87.json', JSON.stringify({ planets: vsopData }));
 
 // =============================================
 // TFJS: Initial VSOP calculation in tensorflow =~
