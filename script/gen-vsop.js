@@ -1,6 +1,6 @@
-// import GeoTIFF from 'geotiff';
-const GeoTIFF = require('geotiff');
+const bson = require('bson');
 const VSOP = require('astronomia').data;
+const fs = require('fs');
 
 const planets = [
   'mercury',
@@ -16,16 +16,12 @@ const planets = [
 const heliocentricKeys = ['L', 'B', 'R'];
 const vsopOrders = [...Array(6).keys()];
 
-planets.forEach((planet) => {
-  // console.log(`\n${planet}`)
-  heliocentricKeys.forEach((k) => {
-    console.log(`\n${k}`)
-    for (o in vsopOrders) {
-      let n = (VSOP[planet][k][o] && VSOP[planet][k][o].length);
-      console.log(n);
-    }
-  });
-});
+const vsopData = planets.reduce((data, planet) => {
+  data[planet] = VSOP[planet];
+  return data
+}, {})
+
+fs.writeFileSync('./data/vsop87/vsop.bson', bson.serialize(vsopData));
 
 // =============================================
 // TFJS: Initial VSOP calculation in tensorflow =~
