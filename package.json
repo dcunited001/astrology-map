@@ -47,6 +47,7 @@
     "deck.gl": "^7.2.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-map-gl": "^5.0.10"
+    "react-map-gl": "^5.0.10",
+    "tfjs": "^0.6.0"
   }
 }
