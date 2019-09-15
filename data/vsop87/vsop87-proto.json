@@ -1,0 +1,77 @@
+{
+  "nested": {
+    "vsop87": {
+      "nested": {
+        "Spectra": {
+          "fields": {
+            "a": {
+              "rule": "required",
+              "type": "float",
+              "id": 1
+            },
+            "b": {
+              "rule": "required",
+              "type": "float",
+              "id": 2
+            },
+            "c": {
+              "rule": "required",
+              "type": "float",
+              "id": 3
+            },
+            "n": {
+              "type": "float",
+              "id": 4
+            }
+          }
+        },
+        "Spectrum": {
+          "fields": {
+            "spectrum": {
+              "rule": "repeated",
+              "type": "Spectra",
+              "id": 1
+            }
+          }
+        },
+        "Polynomial": {
+          "fields": {
+            "orders": {
+              "rule": "repeated",
+              "type": "Spectrum",
+              "id": 1
+            }
+          }
+        },
+        "Planet": {
+          "fields": {
+            "l": {
+              "rule": "required",
+              "type": "Polynomial",
+              "id": 1
+            },
+            "b": {
+              "rule": "required",
+              "type": "Polynomial",
+              "id": 2
+            },
+            "r": {
+              "rule": "required",
+              "type": "Polynomial",
+              "id": 3
+            }
+          }
+        },
+        "System": {
+          "fields": {
+            "planets": {
+              "keyType": "string",
+              "type": "Planet",
+              "id": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

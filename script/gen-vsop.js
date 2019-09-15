@@ -2,7 +2,7 @@ const VSOP = require('astronomia').data;
 const fs = require('fs');
 
 const protobuf = require('protobufjs/light');
-const pbJson = require('./../data/vsop87/vsop87-proto.json');
+const pbJson = require('./data/vsop87/vsop87.proto.json');
 const pbRoot = protobuf.Root.fromJSON(pbJson);
 
 const VsopSpectra = pbRoot.lookupType('vsop87.Spectra');

@@ -1,0 +1,30 @@
+package vsop87;
+
+// one spectral component
+message Spectra {
+  required float a = 1;
+  required float b = 2;
+  required float c = 3;
+  optional float n = 4; // order of poly
+}
+
+// all the components for a spectrum
+message Spectrum {
+  repeated Spectra spectrum = 1;
+}
+
+// all the orders of the horner polynomial
+message Polynomial {
+  repeated Spectrum orders = 1;
+}
+
+// VSOP87b planet
+message Planet {
+  required Polynomial l = 1;
+  required Polynomial b = 2;
+  required Polynomial r = 3;
+}
+
+message System {
+  map<string, Planet> planets = 1;
+}
